@@ -1,0 +1,644 @@
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flor en Crecimiento</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    
+}
+
+        body {
+            margin: 0;
+            background: linear-gradient(27deg, hsla(0, 0%, 10%, 1) 41%, hsla(218, 11%, 15%, 1) 80%, hsla(214, 7%, 20%, 1) 91%, hsla(206, 27%, 18%, 1) 100%);
+                        
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        .stem {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 6px;
+            height: 0;
+            background: green;
+            animation: growStem 5s linear forwards;
+        }
+        .flower {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: 300px;
+            left: 0;
+            transform: translate(-50%, 0);
+            transform-origin: center bottom;
+            opacity: 0;
+            animation: bloom 1.5s ease-in-out 3.5s forwards, rotateFlower 10s linear infinite;
+        }
+        
+        .petal {
+            box-shadow: 10px 10px 27px -5px #ff69b4;
+            position: absolute;
+            width: 50px;
+            height: 80px;
+            background: radial-gradient(circle, #ff69b4, #ff1493);
+            border-radius: 50%;
+        }
+        .petal:nth-child(1) { transform: rotate(0deg) translate(0, -40px);  }
+        .petal:nth-child(2) { transform: rotate(72deg) translate(0, -40px); }
+        .petal:nth-child(3) { transform: rotate(144deg) translate(0, -40px); }
+        .petal:nth-child(4) { transform: rotate(216deg) translate(0, -40px); }
+        .petal:nth-child(5) { transform: rotate(288deg) translate(0, -40px); }
+        .center {
+            
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background: yellow;
+            border-radius: 50%;
+            top: -22px;
+            left: 0px;
+            transform: translateX(-50%);
+        }
+        @keyframes growStem {
+            from { height: 0; }
+            to { height: 300px; }
+        }
+        @keyframes bloom {
+            from { opacity: 0; transform: translate(-50%, 10px); }
+            to { opacity: 1; transform: translate(-50%, -10px); }
+        }
+        @keyframes rotateFlower {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* GRAS */
+
+        .grass {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 200px;
+            display: flex;
+            justify-content: space-evenly;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+
+        .plant {
+            position: absolute;
+            width: 5px;
+            height: 50px;
+            background-color: #28a745;
+            border-top-right-radius: 50%;
+            border-top-left-radius: 50%;
+            bottom: 0;
+            animation: moveGrass 2s ease-in-out infinite;
+        }
+
+        .plant:nth-child(odd) {
+            animation-duration: 2.5s;
+        }
+
+        .color-plant{
+            background-color: #18782e;
+        }
+
+        /* Animación para el movimiento del césped */
+        @keyframes moveGrass {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Diseño de la hoja */
+        .leaf {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+            width: 20px;
+            height: 10px;
+            background-color: #2e8b57;
+            border-radius: 50%;
+            box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.3);
+            animation: leafAnimation 1s ease-in-out infinite;
+        }
+
+        /* Animación para el movimiento de la hoja */
+        @keyframes leafAnimation {
+            0% {
+                transform: translateX(-50%) rotate(45deg) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translateX(-50%) rotate(0deg) scale(1.2);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateX(-50%) rotate(45deg) scale(1);
+                opacity: 1;
+            }
+        }
+
+        .base-gras{
+            position: absolute;
+            bottom: 0;
+            width: 100vw;
+            height: 20px;
+            background: #93490c;
+            z-index: -1;
+        }
+
+        .luciérnaga {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            animation: parpadeo 2s infinite ease-in-out, movimiento 4s infinite linear;
+            background-color: rgba(255, 235, 59, 0.7); /* Color amarillo con opacidad */
+            box-shadow: 0 0 8px rgba(255, 235, 59, 0.8); /* Sombras alrededor de la luciérnaga */
+        }
+
+        @keyframes parpadeo {
+            0% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+        }
+
+        @keyframes movimiento {
+            0% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(50px, 30px);
+            }
+            50% {
+                transform: translate(100px, -20px);
+            }
+            75% {
+                transform: translate(-30px, 50px);
+            }
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        .luciérnaga:nth-child(1) {
+            animation-duration: 2.5s, 4s;
+            animation-delay: 0.5s, 0s;
+            background-color: rgba(255, 235, 59, 0.9); /* Amarillo más brillante */
+            box-shadow: 0 0 10px rgba(255, 235, 59, 0.9);
+        }
+
+        .luciérnaga:nth-child(2) {
+            animation-duration: 3s, 4.2s;
+            animation-delay: 1s, 0.4s;
+            background-color: rgba(255, 235, 59, 0.6);
+            box-shadow: 0 0 6px rgba(255, 235, 59, 0.7);
+        }
+
+        .luciérnaga:nth-child(3) {
+            animation-duration: 2.8s, 3.8s;
+            animation-delay: 1.2s, 0.6s;
+            background-color: rgba(255, 235, 59, 0.8);
+            box-shadow: 0 0 8px rgba(255, 235, 59, 0.8);
+        }
+
+        .luciérnaga:nth-child(4) {
+            animation-duration: 3.2s, 4.5s;
+            animation-delay: 0.7s, 0.2s;
+            background-color: rgba(255, 235, 59, 0.7);
+            box-shadow: 0 0 7px rgba(255, 235, 59, 0.8);
+        }
+
+        .luciérnaga:nth-child(5) {
+            animation-duration: 2.6s, 4.1s;
+            animation-delay: 1.3s, 0.5s;
+            background-color: rgba(255, 235, 59, 0.75);
+            box-shadow: 0 0 9px rgba(255, 235, 59, 0.75);
+        }
+
+        .luciérnaga:nth-child(6) {
+            animation-duration: 3.1s, 4.3s;
+            animation-delay: 0.4s, 0.7s;
+            background-color: rgba(255, 235, 59, 0.85);
+            box-shadow: 0 0 10px rgba(255, 235, 59, 0.85);
+        }
+
+        .luciérnaga:nth-child(7) {
+            animation-duration: 2.9s, 3.9s;
+            animation-delay: 0.9s, 0.6s;
+            background-color: rgba(255, 235, 59, 0.65);
+            box-shadow: 0 0 5px rgba(255, 235, 59, 0.65);
+        }
+
+        .luciérnaga:nth-child(8) {
+            animation-duration: 3.3s, 4.4s;
+            animation-delay: 1.5s, 0.8s;
+            background-color: rgba(255, 235, 59, 0.78);
+            box-shadow: 0 0 8px rgba(255, 235, 59, 0.78);
+        }
+        
+        /* luna */
+
+        .moon {
+            position: absolute;
+            top: -100px;
+            right: 50px;
+            width: 130px;
+            height: 130px;
+            background: radial-gradient(circle, #ffffff 20%, #cccccc 60%, #888888 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 20px 10px rgba(255, 255, 200, 0.8);
+            animation: fall 4s ease-in-out forwards;
+        }
+        @keyframes fall {
+            0% {
+                transform: translate(0, 0) scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: translate(0, 70px) scale(1.2);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(0, 140px) scale(0.8);
+                opacity: 0.5;
+            }
+        }
+
+        .mensaje-sanvalentin p, h1{
+            font-family: "Great Vibes", serif;
+            font-size: 30px;
+            color: rgb(255 203 51 / 97%);
+            font-weight:normal;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .mensaje-sanvalentin h1{
+            font-size: 50px;
+            text-shadow: 0px 0px 6px rgb(255 203 51 / 90%),
+            0px 0px 8px rgb(255 203 51 / 90%),  
+            2px 0px 1px rgb(255 203 51 / 90%);
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <audio id="audioPlayer2" autoplay>
+            <source src="./mp3/te-amo-ut.mp3" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+
+        <div class="mensaje-sanvalentin">
+            <h1 id="titulo"></h1>
+            <p id="texto" class="mensaje"></p>
+        </div>
+
+        <div class="stem" style="left: 30%;  animation: growStem 6s linear forwards;">
+            <div class="flower" style="left: 30%; animation: bloom 2.5s ease-in-out 4.5s forwards, rotateFlower 10s linear infinite;">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="center"></div>
+            </div>
+        </div>
+
+        <div class="stem" style="left: 50%;">
+        <div class="flower" style="left: 50%;">
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="petal"></div>
+            <div class="center"></div>
+        </div>
+        </div>
+
+        <div class="stem" style="left: 70%; animation: growStem 5.5s linear forwards; ">
+            <div class="flower" style="left: 70%; animation: bloom 2s ease-in-out 4s forwards, rotateFlower 10s linear infinite;">
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="petal"></div>
+                <div class="center"></div>
+            </div>
+            </div>
+        
+
+            <div class="grass">
+                <!-- Plantas en aumento de 0.5% hasta el 100% -->
+                <div class="plant color-plant" style="left: 0.5%;"></div>
+                <div class="plant" style="left: 1%;"></div>
+                <div class="plant color-plant" style="left: 1.5%;"></div>
+                <div class="plant" style="left: 2%;"></div>
+                <div class="plant color-plant" style="left: 2.5%;"></div>
+                <div class="plant" style="left: 3%;"></div>
+                <div class="plant color-plant" style="left: 3.5%;"></div>
+                <div class="plant" style="left: 4%;"></div>
+                <div class="plant color-plant" style="left: 4.5%;"></div>
+                <div class="plant" style="left: 5%;"></div>
+                <div class="plant color-plant" style="left: 5.5%;"></div>
+                <div class="plant" style="left: 6%;"></div>
+                <div class="plant color-plant" style="left: 6.5%;"></div>
+                <div class="plant" style="left: 7%;"></div>
+                <div class="plant color-plant" style="left: 7.5%;"></div>
+                <div class="plant" style="left: 8%;"></div>
+                <div class="plant color-plant" style="left: 8.5%;"></div>
+                <div class="plant" style="left: 9%;"></div>
+                <div class="plant color-plant" style="left: 9.5%;"></div>
+                <div class="plant" style="left: 10%;"></div>
+                <div class="plant color-plant" style="left: 10.5%;"></div>
+                <div class="plant" style="left: 11%;"></div>
+                <div class="plant color-plant" style="left: 11.5%;"></div>
+                <div class="plant" style="left: 12%;"></div>
+                <div class="plant color-plant" style="left: 12.5%;"></div>
+                <div class="plant" style="left: 13%;"></div>
+                <div class="plant color-plant" style="left: 13.5%;"></div>
+                <div class="plant" style="left: 14%;"></div>
+                <div class="plant color-plant" style="left: 14.5%;"></div>
+                <div class="plant" style="left: 15%;"></div>
+                <div class="plant color-plant" style="left: 15.5%;"></div>
+                <div class="plant" style="left: 16%;"></div>
+                <div class="plant color-plant" style="left: 16.5%;"></div>
+                <div class="plant" style="left: 17%;"></div>
+                <div class="plant color-plant" style="left: 17.5%;"></div>
+                <div class="plant" style="left: 18%;"></div>
+                <div class="plant color-plant" style="left: 18.5%;"></div>
+                <div class="plant" style="left: 19%;"></div>
+                <div class="plant color-plant" style="left: 19.5%;"></div>
+                <div class="plant" style="left: 20%;"></div>
+                <div class="plant color-plant" style="left: 20.5%;"></div>
+                <div class="plant" style="left: 21%;"></div>
+                <div class="plant color-plant" style="left: 21.5%;"></div>
+                <div class="plant" style="left: 22%;"></div>
+                <div class="plant color-plant" style="left: 22.5%;"></div>
+                <div class="plant" style="left: 23%;"></div>
+                <div class="plant color-plant" style="left: 23.5%;"></div>
+                <div class="plant" style="left: 24%;"></div>
+                <div class="plant color-plant" style="left: 24.5%;"></div>
+                <div class="plant" style="left: 25%;"></div>
+                <div class="plant color-plant" style="left: 25.5%;"></div>
+                <div class="plant" style="left: 26%;"></div>
+                <div class="plant color-plant" style="left: 26.5%;"></div>
+                <div class="plant" style="left: 27%;"></div>
+                <div class="plant color-plant" style="left: 27.5%;"></div>
+                <div class="plant" style="left: 28%;"></div>
+                <div class="plant color-plant" style="left: 28.5%;"></div>
+                <div class="plant" style="left: 29%;"></div>
+                <div class="plant color-plant" style="left: 29.5%;"></div>
+                <div class="plant" style="left: 30%;"></div>
+                <div class="plant color-plant" style="left: 30.5%;"></div>
+                <div class="plant" style="left: 31%;"></div>
+                <div class="plant color-plant" style="left: 31.5%;"></div>
+                <div class="plant" style="left: 32%;"></div>
+                <div class="plant color-plant" style="left: 32.5%;"></div>
+                <div class="plant" style="left: 33%;"></div>
+                <div class="plant color-plant" style="left: 33.5%;"></div>
+                <div class="plant" style="left: 34%;"></div>
+                <div class="plant color-plant" style="left: 34.5%;"></div>
+                <div class="plant" style="left: 35%;"></div>
+                <div class="plant color-plant" style="left: 35.5%;"></div>
+                <div class="plant" style="left: 36%;"></div>
+                <div class="plant color-plant" style="left: 36.5%;"></div>
+                <div class="plant" style="left: 37%;"></div>
+                <div class="plant color-plant" style="left: 37.5%;"></div>
+                <div class="plant" style="left: 38%;"></div>
+                <div class="plant color-plant" style="left: 38.5%;"></div>
+                <div class="plant" style="left: 39%;"></div>
+                <div class="plant color-plant" style="left: 39.5%;"></div>
+                <div class="plant" style="left: 40%;"></div>
+                <div class="plant color-plant" style="left: 40.5%;"></div>
+                <div class="plant" style="left: 41%;"></div>
+                <div class="plant color-plant" style="left: 41.5%;"></div>
+                <div class="plant" style="left: 42%;"></div>
+                <div class="plant color-plant" style="left: 42.5%;"></div>
+                <div class="plant" style="left: 43%;"></div>
+                <div class="plant color-plant" style="left: 43.5%;"></div>
+                <div class="plant" style="left: 44%;"></div>
+                <div class="plant color-plant" style="left: 44.5%;"></div>
+                <div class="plant" style="left: 45%;"></div>
+                <div class="plant color-plant" style="left: 45.5%;"></div>
+                <div class="plant" style="left: 46%;"></div>
+                <div class="plant color-plant" style="left: 46.5%;"></div>
+                <div class="plant" style="left: 47%;"></div>
+                <div class="plant color-plant" style="left: 47.5%;"></div>
+                <div class="plant" style="left: 48%;"></div>
+                <div class="plant color-plant" style="left: 48.5%;"></div>
+                <div class="plant" style="left: 49%;"></div>
+                <div class="plant color-plant" style="left: 49.5%;"></div>
+                <div class="plant" style="left: 50%;"></div>
+                <div class="plant color-plant" style="left: 50.5%;"></div>
+                <div class="plant" style="left: 51%;"></div>
+                <div class="plant color-plant" style="left: 51.5%;"></div>
+                <div class="plant" style="left: 52%;"></div>
+                <div class="plant color-plant" style="left: 52.5%;"></div>
+                <div class="plant" style="left: 53%;"></div>
+                <div class="plant color-plant" style="left: 53.5%;"></div>
+                <div class="plant" style="left: 54%;"></div>
+                <div class="plant color-plant" style="left: 54.5%;"></div>
+                <div class="plant" style="left: 55%;"></div>
+                <div class="plant color-plant" style="left: 55.5%;"></div>
+                <div class="plant" style="left: 56%;"></div>
+                <div class="plant color-plant" style="left: 56.5%;"></div>
+                <div class="plant" style="left: 57%;"></div>
+                <div class="plant color-plant" style="left: 57.5%;"></div>
+                <div class="plant" style="left: 58%;"></div>
+                <div class="plant color-plant" style="left: 58.5%;"></div>
+                <div class="plant" style="left: 59%;"></div>
+                <div class="plant color-plant" style="left: 59.5%;"></div>
+                <div class="plant" style="left: 60%;"></div>
+                <div class="plant color-plant" style="left: 60.5%;"></div>
+                <div class="plant" style="left: 61%;"></div>
+                <div class="plant color-plant" style="left: 61.5%;"></div>
+                <div class="plant" style="left: 62%;"></div>
+                <div class="plant color-plant" style="left: 62.5%;"></div>
+                <div class="plant" style="left: 63%;"></div>
+                <div class="plant color-plant" style="left: 63.5%;"></div>
+                <div class="plant" style="left: 64%;"></div>
+                <div class="plant color-plant" style="left: 64.5%;"></div>
+                <div class="plant" style="left: 65%;"></div>
+                <div class="plant color-plant" style="left: 65.5%;"></div>
+                <div class="plant" style="left: 66%;"></div>
+                <div class="plant color-plant" style="left: 66.5%;"></div>
+                <div class="plant" style="left: 67%;"></div>
+                <div class="plant color-plant" style="left: 67.5%;"></div>
+                <div class="plant" style="left: 68%;"></div>
+                <div class="plant color-plant" style="left: 68.5%;"></div>
+                <div class="plant" style="left: 69%;"></div>
+                <div class="plant color-plant" style="left: 69.5%;"></div>
+                <div class="plant" style="left: 70%;"></div>
+                <div class="plant color-plant" style="left: 70.5%;"></div>
+                <div class="plant" style="left: 71%;"></div>
+                <div class="plant color-plant" style="left: 71.5%;"></div>
+                <div class="plant" style="left: 72%;"></div>
+                <div class="plant color-plant" style="left: 72.5%;"></div>
+                <div class="plant" style="left: 73%;"></div>
+                <div class="plant color-plant" style="left: 73.5%;"></div>
+                <div class="plant" style="left: 74%;"></div>
+                <div class="plant color-plant" style="left: 74.5%;"></div>
+                <div class="plant" style="left: 75%;"></div>
+                <div class="plant color-plant" style="left: 75.5%;"></div>
+                <div class="plant" style="left: 76%;"></div>
+                <div class="plant color-plant" style="left: 76.5%;"></div>
+                <div class="plant" style="left: 77%;"></div>
+                <div class="plant color-plant" style="left: 77.5%;"></div>
+                <div class="plant" style="left: 78%;"></div>
+                <div class="plant color-plant" style="left: 78.5%;"></div>
+                <div class="plant" style="left: 79%;"></div>
+                <div class="plant color-plant" style="left: 79.5%;"></div>
+                <div class="plant" style="left: 80%;"></div>
+                <div class="plant color-plant" style="left: 80.5%;"></div>
+                <div class="plant" style="left: 81%;"></div>
+                <div class="plant color-plant" style="left: 81.5%;"></div>
+                <div class="plant" style="left: 82%;"></div>
+                <div class="plant color-plant" style="left: 82.5%;"></div>
+                <div class="plant" style="left: 83%;"></div>
+                <div class="plant color-plant" style="left: 83.5%;"></div>
+                <div class="plant" style="left: 84%;"></div>
+                <div class="plant color-plant" style="left: 84.5%;"></div>
+                <div class="plant" style="left: 85%;"></div>
+                <div class="plant color-plant" style="left: 85.5%;"></div>
+                <div class="plant" style="left: 86%;"></div>
+                <div class="plant color-plant" style="left: 86.5%;"></div>
+                <div class="plant" style="left: 87%;"></div>
+                <div class="plant color-plant" style="left: 87.5%;"></div>
+                <div class="plant" style="left: 88%;"></div>
+                <div class="plant color-plant" style="left: 88.5%;"></div>
+                <div class="plant" style="left: 89%;"></div>
+                <div class="plant color-plant" style="left: 89.5%;"></div>
+                <div class="plant" style="left: 90%;"></div>
+                <div class="plant color-plant" style="left: 90.5%;"></div>
+                <div class="plant" style="left: 91%;"></div>
+                <div class="plant color-plant" style="left: 91.5%;"></div>
+                <div class="plant" style="left: 92%;"></div>
+                <div class="plant color-plant" style="left: 92.5%;"></div>
+                <div class="plant" style="left: 93%;"></div>
+                <div class="plant color-plant" style="left: 93.5%;"></div>
+                <div class="plant" style="left: 94%;"></div>
+                <div class="plant color-plant" style="left: 94.5%;"></div>
+                <div class="plant" style="left: 95%;"></div>
+                <div class="plant color-plant" style="left: 95.5%;"></div>
+                <div class="plant" style="left: 96%;"></div>
+                <div class="plant color-plant" style="left: 96.5%;"></div>
+                <div class="plant" style="left: 97%;"></div>
+                <div class="plant color-plant" style="left: 97.5%;"></div>
+                <div class="plant" style="left: 98%;"></div>
+                <div class="plant color-plant" style="left: 98.5%;"></div>
+                <div class="plant" style="left: 99%;"></div>
+                <div class="plant color-plant" style="left: 99.5%;"></div>
+                <div class="plant" style="left: 100%;"></div>
+        
+        
+                <!-- Hojas en las plantas -->
+                <div class="leaf" style="left: 10%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 20%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 30%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 40%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 50%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 60%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 70%; bottom: 50px;"></div>
+                <div class="leaf" style="left:  5%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 10%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 15%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 20%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 25%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 30%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 35%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 40%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 45%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 50%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 55%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 60%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 65%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 70%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 75%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 80%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 85%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 90%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 95%; bottom: 50px;"></div>
+                <div class="leaf" style="left: 100%; bottom: 50px;"></div>
+            </div>
+
+            <div class="base-gras"></div>
+
+            <div class="luciérnaga" style="top: 20%; left: 30%;"></div>
+    <div class="luciérnaga" style="top: 50%; left: 60%;"></div>
+    <div class="luciérnaga" style="top: 70%; left: 40%;"></div>
+    <div class="luciérnaga" style="top: 40%; left: 80%;"></div>
+    <div class="luciérnaga" style="top: 10%; left: 70%;"></div>
+    <div class="luciérnaga" style="top: 30%; left: 10%;"></div>
+    <div class="luciérnaga" style="top: 60%; left: 50%;"></div>
+    <div class="luciérnaga" style="top: 80%; left: 20%;"></div>
+        
+    </div>
+
+    <div class="moon"></div>
+
+    <script>
+        function escribirTexto(elemento, texto, velocidad, callback) {
+            let i = 0;
+            function escribir() {
+                if (i < texto.length) {
+                    elemento.innerHTML += texto.charAt(i) === '\n' ? '<br>' : texto.charAt(i);
+                    i++;
+                    setTimeout(escribir, velocidad);
+                } else if (callback) {
+                    callback();
+                }
+            }
+            escribir();
+        }
+        
+        escribirTexto(document.getElementById("titulo"), "¿Quieres ser mi San Valentín?", 100, function() {
+            escribirTexto(document.getElementById("texto"), "Me siento afortunado de tenerte como pareja, eres una mujer maravillosa,\nademás serás una linda registradora y un orgullo para mí.\nCon mucho cariño para ti Meybi, amor de mi vida ♥\nAtte: Brayan Aquije", 50);
+        });
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const audio = document.getElementById("audioPlayer2");
+            audio.volume = 0.4; // Ajusta el volumen al 50%
+        });
+    </script>
+
+
+</body>
+</html>

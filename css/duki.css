@@ -1,0 +1,111 @@
+.cat {
+    top: 150px;
+    /* align-items: center; */
+    /* justify-content: center; */
+    display: flex;
+    position: absolute;
+    width: 120px;
+    height: 80px;
+}
+.body {
+    width: 120px;
+    height: 80px;
+    background-color: #c4a484;
+    border-radius: 50px;
+    position: absolute;
+    bottom: 20px;
+}
+.head {
+    width: 60px;
+    height: 60px;
+    background-color: #5a3e2b;
+    border-radius: 50%;
+    position: absolute;
+    top: -20px;
+    left: 80px;
+}
+.ear {
+    width: 20px;
+    height: 30px;
+    background-color: #5a3e2b;
+    position: absolute;
+    top: -10px;
+    border-radius: 50%;
+}
+.ear.left {
+    left: 10px;
+    transform: rotate(-20deg);
+}
+.ear.right {
+    right: 10px;
+    transform: rotate(20deg);
+}
+.eye {
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+}
+.eye.left {
+    left: 15px;
+}
+.eye.right {
+    right: 15px;
+}
+.whiskers {
+    position: absolute;
+    width: 40px;
+    height: 2px;
+    background-color: black;
+}
+.whiskers.left {
+    top: 30px;
+    left: -20px;
+}
+.whiskers.right {
+    top: 30px;
+    right: -20px;
+}
+.whiskers::before, .whiskers::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 2px;
+    background-color: black;
+}
+.whiskers::before {
+    top: -5px;
+}
+.whiskers::after {
+    top: 5px;
+}
+.tail {
+    width: 20px;
+    height: 60px;
+    background-color: #c4a484;
+    position: absolute;
+    bottom: 10px;
+    left: -10px;
+    border-radius: 50%;
+    animation: wag 1s infinite alternate;
+}
+@keyframes wag {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(20deg); }
+}
+.ball {
+    width: 20px;
+    height: 20px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 10px;
+    left: 50px;
+    animation: bounce 1s infinite alternate;
+}
+@keyframes bounce {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-20px); }
+}
